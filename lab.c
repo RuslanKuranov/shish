@@ -1,4 +1,4 @@
-#include (lab.h)
+#include "lab.h"
 int LR1(int a, int b, int h){
     return ((a-(b*h))/h);
 }
