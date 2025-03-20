@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "lab.c"
+
 
 void lab1();
 void lab1d();
