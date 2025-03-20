@@ -1,6 +1,6 @@
 //lab.h
 
-
+#include <stdio.h>
 #include "labi"
 
 void lab1();
