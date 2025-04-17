@@ -1,4 +1,5 @@
 #include "lab.h"
+
 int LR1(int a, int b, int h){
     return ((a-(b*h))/h);
 }
@@ -164,17 +165,35 @@ void lab4d()
 void lab5()
 {
     printf("В массиве из 10 целых чисел обнулить все элементы, значение которых меньше среднего арифметического элементов данного массива.\n");
-    #define N 10
-
+    #define N 20
 int x[N];
 // массив из N элементов
 int shish;
 // среднее арифметическое
 int i;
 // ввод массива
-printf("Введите 10 целых чисел через пробел, в конце нажмите ввод\n");
+printf("Введите N целых чисел через пробел, в конце нажмите ввод\n");
 for( i = 0; i < N; i++ )
 scanf("%d", &x[i]);
+int tmp;
+int noSwap;
+
+for (int i = N - 1; i >= 0; i--)
+{
+    noSwap = 1;
+    for (int j = 0; j < i; j++)
+    {
+        if (x[j] > x[j + 1])
+        {
+            tmp = x[j];
+            x[j] = x[j + 1];
+            x[j + 1] = tmp;
+            noSwap = 0;
+        }
+    }
+    if (noSwap == 1)
+        break;
+}
 // вычисление среднего арифметического значения
 shish = 0;
 for( i = 0; i < N; i++ )
@@ -191,6 +210,7 @@ for( i = 0; i < N; i++ )
 printf("%d ", x[i]);
 printf("\n");
 }
+
 void lab5d()
 {
     printf(" Тема лабы");
