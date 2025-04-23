@@ -23,7 +23,32 @@ void elkipalki(char *str) {
     }
     str[j] = '0';
 }
+void ohtieklmn(int N, int K, int array[N][K]) {
+    int min_sum = 0;
+    int min_stroka = 0;
+    
+    // Вычисляем сумму первой строки для инициализации min_sum
+    for (int j = 0; j < K; j++) {
+        min_sum += array[0][j];
+    }
 
+    // Находим строку с минимальной суммой
+    for (int i = 1; i < N; i++) {
+        int shish_sum = 0;
+        for (int j = 0; j < K; j++) {
+            shish_sum += array[i][j];
+        }
+        if (shish_sum < min_sum) {
+            min_sum = shish_sum;
+            min_stroka = i;
+        }
+    }
+
+    // Обнуляем строку с минимальной суммой
+    for (int j = 0; j < K; j++) {
+        array[min_stroka][j] = 0;
+    }
+}
 void lab1()
 
 {
@@ -164,21 +189,21 @@ void lab4d()
 }
 void lab5()
 {
-    printf("В массиве из 10 целых чисел обнулить все элементы, значение которых меньше среднего арифметического элементов данного массива.\n");
-    #define N 20
-int x[N];
-// массив из N элементов
+    printf("В массиве из L целых чисел обнулить все элементы, значение которых меньше среднего арифметического элементов данного массива.\n");
+    #define L 20
+int x[L];
+// массив из L элементов
 int shish;
 // среднее арифметическое
 int i;
 // ввод массива
-printf("Введите N целых чисел через пробел, в конце нажмите ввод\n");
-for( i = 0; i < N; i++ )
+printf("Введите L целых чисел через пробел, в конце нажмите ввод\n");
+for( i = 0; i < L; i++ )
 scanf("%d", &x[i]);
 int tmp;
 int noSwap;
 
-for (int i = N - 1; i >= 0; i--)
+for (int i = L - 1; i >= 0; i--)
 {
     noSwap = 1;
     for (int j = 0; j < i; j++)
@@ -196,17 +221,17 @@ for (int i = N - 1; i >= 0; i--)
 }
 // вычисление среднего арифметического значения
 shish = 0;
-for( i = 0; i < N; i++ )
+for( i = 0; i < L; i++ )
 shish = shish + x[i];
-shish = shish / N;
+shish = shish / L;
 // выборочное обнуление элементов
-for( i = 0; i < N; i++ )
+for( i = 0; i < L; i++ )
 {
 if( x[i] < shish )
 x[i] = 0;
 }
 // вывод массива
-for( i = 0; i < N; i++ )
+for( i = 0; i < L; i++ )
 printf("%d ", x[i]);
 printf("\n");
 }
@@ -218,7 +243,47 @@ void lab5d()
 }
 void lab6()
 {
-    printf("Тема лабы");
+    printf("В двумерном целочисленном массиве размера N на K обнулить строку с минимальной суммой элементов.\n");
+    int N, K;
+
+    // Ввод размеров массива
+    printf("Введите количество строк N: ");
+    scanf("%d", &N);
+    printf("Введите количество столбцов K: ");
+    scanf("%d", &K);
+
+    int array[N][K];
+
+    // Ввод элементов массива
+    printf("Введите элементы массива построчно:\n");
+    for (int i = 0; i < N; i++) {
+        printf("Строка %d: ", i + 1);
+        for (int j = 0; j < K; j++) {
+            scanf("%d", &array[i][j]);
+        }
+    }
+
+    // Вывод исходного массива
+    printf("\nИсходный массив:\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < K; j++) {
+            printf("%3d ", array[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Обнуление строки с минимальной суммой
+    ohtieklmn(N, K, array);
+
+    // Вывод измененного массива
+    printf("\nМассив после обнуления строки с минимальной суммой:\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < K; j++) {
+            printf("%3d ", array[i][j]);
+        }
+        printf("\n");
+    }
+
 }
 void lab6d()
 {
