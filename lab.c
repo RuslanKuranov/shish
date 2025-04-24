@@ -259,10 +259,9 @@ void lab6()
     for (int i = 0; i < N; i++) {
         printf("Строка %d: ", i + 1);
         for (int j = 0; j < K; j++) {
-            scanf("%d", &array[i][j]);
+            scanf("%d", &array[j][i]);
         }
     }
-
     // Вывод исходного массива
     printf("\nИсходный массив:\n");
     for (int i = 0; i < N; i++) {
